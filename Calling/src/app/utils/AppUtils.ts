@@ -10,10 +10,10 @@ import { v1 as generateGUID } from 'uuid';
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const fetchTokenResponse = async (): Promise<any> => {
-  const myURL = process.env.PORT || 3001;
-  console.log('NEW');
-  
-  const response = await fetch('https://meeting-bixo.onrender.com:' + myURL + '/token?scope=voip');
+  // const myURL = process.env.PORT || 3001;
+  // console.log('NEW');
+  //'https://meeting-bixo.onrender.com:' + myURL + '
+  const response = await fetch('/token?scope=voip');
   //const response = await fetch('http://localhost:8080/token?scope=voip');
   if (response.ok) {
     const responseAsJson = await response.json(); //(await response.json())?.value?.token;
