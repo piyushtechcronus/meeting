@@ -11,7 +11,7 @@ const debug = require('debug')('calling-sample-server:server');
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '8080');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
@@ -28,6 +28,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 console.debug(`Express server started (http://localhost:${port}).`);
+console.log('HEY');
 
 /**
  * Normalize a port into a number, string, or false.
