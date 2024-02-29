@@ -25,6 +25,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, 'build')));
 
+
+// Define routes
+app.get('/', (req:any, res:any) => {
+  console.log('Hey, you have access to the MEETING app!');
+  res.send('Hello, world!');
+});
+
 /**
  * route: /createThread
  * purpose: Chat: create a new chat thread
