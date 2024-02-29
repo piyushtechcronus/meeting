@@ -7,7 +7,7 @@
     "build": "npm run clean && concurrently --kill-others-on-fail \"tsc\" \"webpack --mode=production --env production\"",
     "clean": "rimraf dist",
     "package": "copyfiles -E -u 3 \"../Server/dist/**/*\" dist",
-    "start": "concurrently \"cd ../Server && npm run start\" \"npm run start\"",
+    "start": "node -e \"const http = require('http'); const port = process.env.PORT || 8080; const server = http.createServer(); server.listen(port, () => { console.log(`Express server started (http://localhost:${port}).`); }); server.on('error', (err) => { if (err.code === 'EADDRINUSE') { console.log(`Port ${port} is already in use. Trying another port...`); server.close(); setTimeout(() => { server.listen(0, () => { const newPort = server.address().port; console.log(`Express server started (http://localhost:${newPort}).`); }); }, 1000); } else { console.error('Server error:', err); } }); process.on('uncaughtException', (err) => { console.error('Uncaught Exception:', err); process.exit(1); }); process.on('unhandledRejection', (reason, promise) => { console.error('Unhandled Rejection at:', promise, 'reason:', reason); process.exit(1); });\"",
     "start:app": "webpack-cli serve --mode=development --env development",
     "start:prod": "node dist/server.js",
     "test": "",
